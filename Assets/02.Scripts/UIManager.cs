@@ -13,8 +13,7 @@ public class UIManager : MonoBehaviour
     public GameMgr gameMgr;
     public Destroyer destroyer;
     void Start()
-    {
-        life.text = "Life : "+ hert;
+    {        
         gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
         destroyer = GameObject.Find("Destroyer").GetComponent<Destroyer>();
     }
