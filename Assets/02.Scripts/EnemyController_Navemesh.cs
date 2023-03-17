@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+
+public class EnemyController_Navemesh : MonoBehaviour
 {
-    public List<Transform> targetPos;
     public CharacterController characterController;
     public Transform curTargetPos;
     public float moveSpeed = 5f;
@@ -18,28 +18,13 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();        
         characterController = GetComponent<CharacterController>();
-        gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
-        for (int i = 1; i < 10; i++)
-        {
-            targetPos.Add(GameObject.Find("EnemyNode" + i).transform);
-        }        
+        curTargetPos = GameObject.Find("Destroyer").transform;
+        nav = GetComponent<NavMeshAgent>();
+        nav.SetDestination(curTargetPos.position);
     }
 
-
-    void Update()
-    {
-        curTargetPos = targetPos[0];
-        float distance = Vector3.Distance(transform.position, curTargetPos.position);
-        Vector3 dir = curTargetPos.position - transform.position;
-        dir.y = 0;
-        dir.Normalize();
-        characterController.SimpleMove(dir * moveSpeed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
-
-        if (distance < 0.2f)
-            targetPos.RemoveAt(0);
-    }
     public void DamageByBullet(int dmg)
     {
         if(isDead==false)

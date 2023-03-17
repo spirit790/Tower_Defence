@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 3549793311504219126}
   - component: {fileID: 4838703249325450021}
   - component: {fileID: 6326080198714247912}
-  - component: {fileID: -1540274673645903692}
   - component: {fileID: -4167521498119800773}
-  - component: {fileID: -2768209010037420617}
+  - component: {fileID: 4602169538305508058}
+  - component: {fileID: -4155059982256805321}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_Navmesh
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-1540274673645903692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5129973578630983505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f31e12a2c8fb64cb2143594d7764a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPos: []
-  characterController: {fileID: 0}
-  curTargetPos: {fileID: 0}
-  moveSpeed: 5
-  rotationSpeed: 10
-  enemyHp: 100
-  gameMgr: {fileID: 0}
-  deadeffect: {fileID: 29259516212780528, guid: 4b31d384a2f16f54996974adb4bce09a, type: 3}
-  nav: {fileID: 0}
 --- !u!143 &-4167521498119800773
 CharacterController:
   m_ObjectHideFlags: 0
@@ -128,7 +107,27 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &-2768209010037420617
+--- !u!114 &4602169538305508058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129973578630983505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab8a3c2434718441859a419812a8ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
+  curTargetPos: {fileID: 0}
+  moveSpeed: 5
+  rotationSpeed: 10
+  enemyHp: 100
+  gameMgr: {fileID: 0}
+  deadeffect: {fileID: 0}
+  nav: {fileID: 0}
+--- !u!195 &-4155059982256805321
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

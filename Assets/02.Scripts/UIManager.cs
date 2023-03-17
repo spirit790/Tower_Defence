@@ -12,19 +12,21 @@ public class UIManager : MonoBehaviour
     public int hert = 20;
     public GameMgr gameMgr;
     public Destroyer destroyer;
+    public UpgradeMgr upgradeMgr;
+
     void Start()
     {        
         gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
         destroyer = GameObject.Find("Destroyer").GetComponent<Destroyer>();
+        upgradeMgr = GameObject.Find("UpgradeMgr").GetComponent<UpgradeMgr>();
     }
 
     void Update()
     {
         life.text = "Life : "+ destroyer.life;
-        gold.text = "Gold : " + gameMgr.killCnt * 100;
+        gold.text = "Gold : " + GoldCont().ToString();
         killCountText.text = "KILL : "+gameMgr.killCnt;
         lvText.text = "LV" + gameMgr.curLV;
-
     }
 
     public void RangeOff()
@@ -35,5 +37,11 @@ public class UIManager : MonoBehaviour
             objs[i].GetComponent<MeshRenderer>().enabled = false;
         }
     }
-    
+
+    public int GoldCont()
+    {        
+        int calculatedGold = (gameMgr.killCnt * 100) - (upgradeMgr.aTkupCnt*upgradeMgr.aTkup) - (upgradeMgr.aSpupCnt * upgradeMgr.aSpup) - 
+            (upgradeMgr.aRgupCnt * upgradeMgr.aRgup);
+        return calculatedGold;
+    }
 }
